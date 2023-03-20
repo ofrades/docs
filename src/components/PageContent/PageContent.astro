@@ -1,8 +1,4 @@
 ---
-import { normalizeLangTag } from '../../i18n/bcp-normalize';
-import { rtlLanguages } from '../../i18n/languages';
-import { getLanguageFromURL } from '../../util';
-import FallbackNotice from '../FallbackNotice.astro';
 import ArticleNavigationButton from './ArticleNavigationButton.astro';
 
 export interface Props {
@@ -16,20 +12,17 @@ const { content, previous, next } = Astro.props;
 const title = content.title
 	.replace('@astrojs/', '<span class="scope">@astrojs/</span><wbr>')
 	.replaceAll('-', '&#8288;-&#8288;');
-const isFallback = !!Astro.params.fallback || undefined;
-const lang = getLanguageFromURL(Astro.url.pathname);
-const bcpLang = normalizeLangTag(lang);
-const direction = rtlLanguages.has(lang) ? 'rtl' : 'ltr';
+// const isFallback = !!Astro.params.fallback || undefined;
 ---
 
-<div dir={isFallback ? 'ltr' : direction} lang={isFallback && 'en'}>
+<div>
 	{
 		// For best cross-browser support of sticky or fixed elements, they must not be nested
 		// inside elements that hide any overflow axis. The article hides `overflow-x`,
 		// so we must place fixed UI elements like the mobile TOC here.
 		Astro.slots.has('before-article') && (
 			<>
-				<div class="fixed-mobile-bar" dir={direction}>
+				<div class="fixed-mobile-bar">
 					<slot name="before-article" />
 				</div>
 				<div class="spacer" />
@@ -43,13 +36,6 @@ const direction = rtlLanguages.has(lang) ? 'rtl' : 'ltr';
 				<h1 class="content-title" id="overview" set:html={title} />
 				<slot name="after-title" />
 			</header>
-			{
-				isFallback && (
-					<div lang={bcpLang} dir={direction}>
-						<FallbackNotice />
-					</div>
-				)
-			}
 			<slot />
 		</section>
 		{

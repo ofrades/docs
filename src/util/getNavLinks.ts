@@ -1,6 +1,5 @@
 import type { AstroGlobal } from 'astro';
-import { getLanguageFromURL } from '../util';
-import { getNav } from './getNav';
+import { navTranslations } from '~/i18n/util';
 
 interface NavItem {
 	text: string;
@@ -24,7 +23,7 @@ interface PreviousAndNext {
  * @returns `previous` and `next` links if available
  */
 export async function getNavLinks(Astro: Readonly<AstroGlobal>): Promise<PreviousAndNext> {
-	const links = (await getNav(Astro)).filter((x) => !('header' in x) && x.slug) as NavItem[];
+	const links = navTranslations['en'].filter((x) => !('header' in x) && x.slug) as NavItem[];
 	return getPreviousAndNext(links, Astro);
 }
 
@@ -33,9 +32,8 @@ export function getPreviousAndNext(
 	Astro: Readonly<AstroGlobal>
 ): PreviousAndNext {
 	const index = links.findIndex((x) => Astro.url.pathname.replace(/\/$/, '').endsWith(x.slug));
-	const lang = getLanguageFromURL(Astro.url.pathname);
 
-	const makeLinkItem = ({ text, slug }: NavItem): LinkItem => ({ text, link: `/${lang}/${slug}/` });
+	const makeLinkItem = ({ text, slug }: NavItem): LinkItem => ({ text, link: `/${slug}/` });
 
 	return {
 		previous: index > 0 ? makeLinkItem(links[index - 1]) : undefined,

@@ -1,23 +1,14 @@
 ---
 import '@docsearch/css/dist/style.css';
-import type { DocSearchTranslation } from '../../i18n/translation-checkers';
 import DocSearch from './DocSearch';
 import './HeaderButton.css';
 import './DocSearch.css';
-
-export interface Props {
-	lang?: string;
-	labels: DocSearchTranslation;
-}
-
-const { lang, labels } = Astro.props as Props;
-const { button, shortcutLabel, ...modalLabels } = labels;
 ---
 
 <button
 	class="search-input header-button"
 	type="button"
-	aria-label={button}
+	aria-label={'Search'}
 	id="docsearch-search-button"
 >
 	<svg
@@ -38,14 +29,14 @@ const { button, shortcutLabel, ...modalLabels } = labels;
 			transform="translate(-1)"></path>
 	</svg>
 	<span class="search-placeholder">
-		{button}
-		<span class="sr-only">({shortcutLabel})</span>
+		Search
+		<span class="sr-only">Press / to search</span>
 	</span>
 	<span class="search-keyboard-hint">
 		<kbd aria-hidden="true">/</kbd>
 	</span>
 </button>
-<DocSearch {...{ lang, labels: modalLabels }} client:only="preact" />
+<DocSearch client:only="preact" />
 
 <style>
 	/** Style search header button */

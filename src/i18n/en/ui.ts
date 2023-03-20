@@ -13,7 +13,6 @@ export default {
 	'leftSidebar.learnTab': 'Learn',
 	'leftSidebar.referenceTab': 'Reference',
 	'leftSidebar.viewInEnglish': 'View in English',
-	'leftSidebar.sponsoredBy': 'Sponsored by',
 	// Right Sidebar
 	'rightSidebar.a11yTitle': 'Secondary',
 	'rightSidebar.onThisPage': 'On this page',
@@ -24,7 +23,6 @@ export default {
 	'rightSidebar.openCollective': 'Our Open Collective',
 	'rightSidebar.contribute': 'Contribute',
 	'rightSidebar.editPage': 'Edit this page',
-	'rightSidebar.translatePage': 'Translate this page',
 	'rightSidebar.github': 'Astro Docs on GitHub',
 	// Footer
 	'footer.privacyPolicy': 'Privacy Policy',
@@ -51,8 +49,6 @@ export default {
 	'cms.navTitle': 'More CMS guides',
 	// Migration Guides vocabulary
 	'migration.navTitle': 'More migration guides',
-	// Recipes vocabulary
-	'recipes.navTitle': 'More recipes',
 	// `<ContributorList>` fallback text
 	'contributors.seeAll': 'See all contributors',
 	// Fallback content notice shown when a page is not yet translated

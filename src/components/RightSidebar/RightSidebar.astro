@@ -5,7 +5,7 @@ import CommunityMenu from './CommunityMenu.astro';
 import { useTranslations } from '../../i18n/util';
 import generateToc from '../../util/generateToc';
 
-const t = useTranslations(Astro);
+const t = useTranslations();
 
 const { content, githubEditUrl, headings } = Astro.props;
 const overview = t('rightSidebar.overview');

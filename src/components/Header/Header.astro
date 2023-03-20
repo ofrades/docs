@@ -1,22 +1,17 @@
 ---
 import SkipToContent from './SkipToContent.astro';
 import SidebarToggle from './SidebarToggle';
-import LanguageSelect from './LanguageSelect';
 import Search from './Search.astro';
 import ThemeToggleButton from './ThemeToggleButton';
-import { getLanguageFromURL } from '../../util';
-import { getDocSearchStrings, useTranslations } from '../../i18n/util';
+import { useTranslations } from '../../i18n/util';
 
-const { currentPage } = Astro.props;
-const lang = currentPage && getLanguageFromURL(currentPage);
-const docsearchStrings = getDocSearchStrings(Astro);
-const t = useTranslations(Astro);
+const t = useTranslations();
 ---
 
 <header>
 	<SkipToContent />
 	<nav class="nav-wrapper" aria-label={t('navbar.a11yTitle')}>
-		<div dir="ltr" lang="en" class="logo flex">
+		<div class="logo flex">
 			<ul>
 				<li>
 					<a class="astro" href="https://astro.build/">
@@ -55,7 +50,7 @@ const t = useTranslations(Astro);
 					</a>
 				</li>
 				<li>
-					<a class="docs" href={`/${lang || 'en'}/getting-started/`}>
+					<a class="docs" href={`/getting-started/`}>
 						<span class="sr-only">Docs</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -80,8 +75,7 @@ const t = useTranslations(Astro);
 			labels={{ useLight: t('themeToggle.useLight'), useDark: t('themeToggle.useDark') }}
 			isInsideHeader={true}
 		/>
-		{lang && <LanguageSelect lang={lang} label={t('languageSelect.label')} client:idle />}
-		<Search {lang} labels={docsearchStrings} />
+		<Search />
 		<SidebarToggle client:idle />
 	</nav>
 </header>

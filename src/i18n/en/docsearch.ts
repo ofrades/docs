@@ -8,5 +8,4 @@ export default DocSearchDictionary({
 	resultsFooterIntegrations: 'Astro integrations directory',
 	resultsFooterThemes: 'Astro themes showcase',
 	resultsFooterDiscord: 'Join us on Discord',
-	modal: {},
 });

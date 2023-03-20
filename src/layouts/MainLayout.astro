@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { content, headings } = Astro.props;
-const t = useTranslations(Astro);
+const t = useTranslations();
 const { previous, next } = await getNavLinks(Astro);
 const githubEditUrl = getGithubEditUrl(Astro);
 const overview = t('rightSidebar.overview');

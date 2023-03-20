@@ -12,7 +12,7 @@ if (!/^\s*<ul>/.test(content)) {
 	);
 }
 
-const t = useTranslations(Astro);
+const t = useTranslations();
 
 const processedContent = await fileTreeProcessor.process({
 	value: content,

@@ -5,7 +5,7 @@ export interface Props {
 	title?: string;
 }
 
-const t = useTranslations(Astro);
+const t = useTranslations();
 const { type = 'note', title = t(`aside.${type}`) } = Astro.props as Props;
 
 // SVG icon paths based on GitHub Octicons

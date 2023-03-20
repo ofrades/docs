@@ -1,11 +1,8 @@
-import type { ModalTranslations } from '@docsearch/react';
 import enNav from './en/nav';
 import type enUI from './en/ui';
-import type languages from './languages';
 
 export type UIDictionaryKeys = keyof typeof enUI;
 export type UIDict = Partial<typeof enUI>;
-export type UILanguageKeys = keyof typeof languages;
 
 /** Helper to type check a dictionary of UI string translations. */
 export const UIDictionary = (dict: Partial<typeof enUI>) => dict;
@@ -45,7 +42,6 @@ export interface DocSearchTranslation {
 	placeholder?: string;
 	// This object follows DocSearch's translation.modal format.
 	// See: https://docsearch.algolia.com/docs/api/#translations
-	modal?: ModalTranslations;
 }
 
 /** Helper to type check a dictionary of DocSearch string translations. */
